@@ -1,7 +1,9 @@
 const path = require('path');
 const BundleTracker = require('webpack-bundle-tracker');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const webpack = require('webpack');
+const extractSCSS = new ExtractTextPlugin('[name].min.css');
 
 module.exports = {
     mode: 'development',
@@ -21,14 +23,15 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.css$/,
-                use: ['style-loader', 'css-loader']
-            }
+                test: /\.scss/i,
+                use: extractSCSS.extract(['css-loader', 'sass-loader'])
+            },
         ]
     },
     plugins: [
         new CleanWebpackPlugin(['assets/bundles']),
         new BundleTracker({filename: './webpack-stats.json'}),
+        extractSCSS,
         new webpack.HotModuleReplacementPlugin(),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('production')

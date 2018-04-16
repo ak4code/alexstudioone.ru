@@ -4,11 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block seo_title %}AlexStudio{% endblock %}</title>
+    {% render_bundle 'app' 'css' %}
 </head>
 <body>
 {% block main %}
 
 {% endblock %}
-{% render_bundle 'app' %}
+{% render_bundle 'app' 'js' %}
 </body>
 </html>
