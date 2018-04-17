@@ -1,12 +1,52 @@
 {% load render_bundle from webpack_loader %}
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <title>{% block seo_title %}AlexStudio{% endblock %}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block seo_title %}АЛЕКС{% endblock %}</title>
     {% render_bundle 'app' 'css' %}
 </head>
 <body>
+{% block topbar %}
+    <div class="as-topbar uk-visible@s">
+        <div class="uk-container uk-container-expand">
+            <ul class="as-topmenu uk-flex uk-flex-center">
+                <li><a href="">Меню</a></li>
+                <li><a href="">Программа</a></li>
+                <li><a href="">Фото</a></li>
+                <li><a href="">Видео</a></li>
+                <li><a href="">Меню</a></li>
+                <li><a href="">Меню</a></li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
+{% block navbar %}
+    <div class="as-header">
+        <div class="uk-flex uk-flex-middle uk-flex-around">
+            <div class="uk-padding-small">
+                <a href="" class="as-logo uk-align-left uk-margin-remove">
+                    <img src="{% static 'svg/logo.svg' %}">
+                </a>
+                <span class="uk-visible@s"><strong>Праздничное <br/> Агентство</strong></span>
+            </div>
+            <div class="uk-padding-small uk-visible@s">
+                <div>
+                    <div><span class="uk-margin-small-right" uk-icon="location"></span> Адрес:</div>
+                    <div><strong>г-к. Анапа, ул. Кирова 54</strong></div>
+                </div>
+            </div>
+            <div class="uk-padding-small uk-visible@s">
+                <div><span class="uk-margin-small-right" uk-icon="phone"></span> Телефон:</div>
+                <div class="as-phone"><strong>8 (918) 64-86-996</strong></div>
+                <div class="as-phone"><strong>8 (928) 037-39-65</strong></div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
 {% block main %}
 
 {% endblock %}

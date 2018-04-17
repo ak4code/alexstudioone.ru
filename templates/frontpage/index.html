@@ -1,9 +1,17 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 
 {% block seo_title %}
-    HELLO WORLD - {{ block.super }}
+    {{ block.super }} - ПРАЗДНИЧНОЕ АГЕНТСТВО - АНАПА
 {% endblock %}
 
 {% block main %}
-    <h1>HELLO WORLD</h1>
+    <div class="uk-cover-container as-cloud">
+        <canvas height="400"></canvas>
+        <img src="{% static 'jpg/home.jpg' %}" alt="" uk-cover>
+        <div class="uk-position-center uk-container">
+            <h1 class="as-site-title uk-text-center">АЛЕКС - Праздничное Агентство - Анапа</h1>
+            <p class="as-site-title uk-text-center">Организация детских праздников в Анапе</p>
+        </div>
+    </div>
 {% endblock %}

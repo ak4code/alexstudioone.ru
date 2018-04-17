@@ -1,8 +1,98 @@
 $global-link-color: #DA7D02;
 
+.as-topbar {
+  min-height: 40px;
+  background: url('../svg/stripe.svg');
+  background-size: 40px;
+}
+
+ul.as-topmenu {
+  list-style: none;
+  color: white;
+  line-height: 40px;
+  vertical-align: middle;
+  li {
+    a {
+      color: hotpink;
+      font-weight: bold;
+      text-transform: uppercase;
+      transition: color .3s ease-in-out;
+      &:hover {
+        text-decoration: none;
+        color: deeppink;
+      }
+    }
+    &:after {
+      content: '*';
+      font-weight: bold;
+      vertical-align: middle;
+      padding: 0 20px;
+      color: yellow;
+    }
+    &:last-child {
+      &:after {
+        content: none;
+      }
+    }
+  }
+}
+
+.as-header {
+  background: white;
+  position: relative;
+  box-shadow: -3px 0px 10px rgba(0, 0, 0, 0.36);
+}
+
+.as-logo {
+  &:hover {
+    text-decoration: none;
+  }
+  img {
+    min-height: 70px;
+    height: 100%;
+    padding: 0px 30px;
+  }
+}
+
+.as-site-title {
+  text-transform: uppercase;
+  color: white;
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.45);
+  font-weight: bold;
+}
+
+.as-cloud {
+  position: relative;
+  &:before {
+    content: ' ';
+    position: absolute;
+    width: 100%;
+    height: 98px;
+    top: 0;
+    left: 0;
+    background-image: url('../svg/cloud.svg');
+    background-repeat: repeat-x;
+    z-index: 2;
+  }
+  &:after {
+    content: ' ';
+    position: absolute;
+    width: 100%;
+    height: 98px;
+    bottom: 0;
+    left: 0;
+    transform: rotate(180deg);
+    background-image: url('../svg/cloud.svg');
+    background-repeat: repeat-x;
+    z-index: 2;
+  }
+}
+
 @import "uikit/src/scss/variables-theme.scss";
 @import "uikit/src/scss/mixins-theme.scss";
 
-@mixin hook-card() { color: #000; }
+@mixin hook-card() {
+  color: #000;
+}
 
 @import "uikit/src/scss/uikit-theme.scss";

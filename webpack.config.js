@@ -6,7 +6,6 @@ const webpack = require('webpack');
 const extractSCSS = new ExtractTextPlugin('[name].min.css');
 
 module.exports = {
-    mode: 'development',
     entry: {
         app: './assets/js/index.js',
     },
@@ -23,9 +22,23 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.(png|svg|jpg|gif)$/,
+                use: [
+                    'file-loader'
+                ]
+            },
+            {
                 test: /\.scss/i,
+                exclude: /node_modules/,
                 use: extractSCSS.extract(['css-loader', 'sass-loader'])
             },
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader'
+                }
+            }
         ]
     },
     plugins: [
