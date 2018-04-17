@@ -30,7 +30,10 @@
                 <a href="" class="as-logo uk-align-left uk-margin-remove">
                     <img src="{% static 'svg/logo.svg' %}">
                 </a>
-                <span class="uk-visible@s"><strong>Праздничное <br/> Агентство</strong></span>
+                <small class="uk-visible@s">Праздничное <br/> Агентство</small>
+            </div>
+            <div class="uk-padding-small uk-visible@s uk-visible@m">
+                <a href="#modal-feed" class="as-feed-btn" title="Оставить заявку на организацию праздника" uk-toggle>Оставить заявку</a>
             </div>
             <div class="uk-padding-small uk-visible@s">
                 <div>
@@ -40,9 +43,26 @@
             </div>
             <div class="uk-padding-small uk-visible@s">
                 <div><span class="uk-margin-small-right" uk-icon="phone"></span> Телефон:</div>
-                <div class="as-phone"><strong>8 (918) 64-86-996</strong></div>
-                <div class="as-phone"><strong>8 (928) 037-39-65</strong></div>
+                <div class="as-phone"><strong><a href="">8 (918) 64-86-996</a></strong></div>
+                <div class="as-phone"><strong><a href="">8 (928) 037-39-65</a></strong></div>
             </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block modal_feed %}
+    <div id="modal-feed" uk-modal>
+        <div class="uk-modal-dialog uk-modal-body">
+            <h2 class="uk-modal-title">Headline</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                deserunt mollit anim id est laborum.</p>
+            <p class="uk-text-right">
+                <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+                <button class="uk-button uk-button-primary" type="button">Save</button>
+            </p>
         </div>
     </div>
 {% endblock %}

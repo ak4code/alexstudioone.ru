@@ -1,4 +1,12 @@
-$global-link-color: #DA7D02;
+$global-link-color: #f7117a;
+$base-link-hover-color: #af0c56;
+$base-link-hover-text-decoration: none;
+$global-color: #212a63;
+$card-primary-title-color: #f7117a;
+$base-heading-color: #f7117a;
+$heading-line-border: $base-heading-color;
+$inverse-heading-line-border: #ffffff;
+$inverse-base-heading-color: #ffffff;
 
 .as-topbar {
   min-height: 40px;
@@ -17,6 +25,7 @@ ul.as-topmenu {
       font-weight: bold;
       text-transform: uppercase;
       transition: color .3s ease-in-out;
+      text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.35);
       &:hover {
         text-decoration: none;
         color: deeppink;
@@ -40,7 +49,7 @@ ul.as-topmenu {
 .as-header {
   background: white;
   position: relative;
-  box-shadow: -3px 0px 10px rgba(0, 0, 0, 0.36);
+  box-shadow: -3px 0px 10px rgba(0, 0, 0, 0.65);
 }
 
 .as-logo {
@@ -85,6 +94,19 @@ ul.as-topmenu {
     background-image: url('../svg/cloud.svg');
     background-repeat: repeat-x;
     z-index: 2;
+  }
+}
+
+.as-feed-btn {
+  background: linear-gradient(-45deg, #ffdb2e, #feba04);
+  padding: 10px 20px;
+  border-radius: 15px;
+  font-weight: bold;
+  box-shadow: 1px 3px 0px #ce9c0c;
+  transition: all .3s ease-in-out;
+  &:hover {
+    box-shadow: 0px 0px 1px #ce9c0c;
+    background: linear-gradient(-45deg, #c9ab25, #bf8d04);
   }
 }
 
