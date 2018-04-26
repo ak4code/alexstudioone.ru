@@ -13,12 +13,11 @@
     <div class="as-topbar uk-visible@s">
         <div class="uk-container uk-container-expand">
             <ul class="as-topmenu uk-flex uk-flex-center">
-                <li><a href="">Меню</a></li>
-                <li><a href="">Программа</a></li>
-                <li><a href="">Фото</a></li>
-                <li><a href="">Видео</a></li>
-                <li><a href="">Меню</a></li>
-                <li><a href="">Меню</a></li>
+                {% if top_menu.menuItems.all %}
+                    {% for item in top_menu.menuItems.all %}
+                        <li><a href="{{ item.get_url_page }}">{{ item.name }}</a></li>
+                    {% endfor %}
+                {% endif %}
             </ul>
         </div>
     </div>
@@ -33,7 +32,8 @@
                 <small class="uk-visible@s">Праздничное <br/> Агентство</small>
             </div>
             <div class="uk-padding-small uk-visible@s uk-visible@m">
-                <a href="#modal-feed" class="as-feed-btn" title="Оставить заявку на организацию праздника" uk-toggle>Оставить заявку</a>
+                <a href="#modal-feed" class="as-feed-btn" title="Оставить заявку на организацию праздника" uk-toggle>Оставить
+                    заявку</a>
             </div>
             <div class="uk-padding-small uk-visible@s">
                 <div>
@@ -49,27 +49,67 @@
         </div>
     </div>
 {% endblock %}
-
 {% block modal_feed %}
     <div id="modal-feed" uk-modal>
         <div class="uk-modal-dialog uk-modal-body">
-            <h2 class="uk-modal-title">Headline</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                deserunt mollit anim id est laborum.</p>
-            <p class="uk-text-right">
-                <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
-                <button class="uk-button uk-button-primary" type="button">Save</button>
-            </p>
+            <form class="uk-form-stacked">
+                <div class="uk-margin">
+                    <label class="uk-form-label" for="client-name">Ваше имя</label>
+                    <div class="uk-form-controls">
+                        <input class="uk-input" id="client-name" type="text" placeholder="Ваше имя">
+                    </div>
+                </div>
+                <div class="uk-margin">
+                    <label class="uk-form-label" for="client-phone">Ваш телефон</label>
+                    <div class="uk-form-controls">
+                        <input class="uk-input" id="client-phone" type="text" placeholder="8 999 999-99-99">
+                    </div>
+                </div>
+                <div class="uk-margin">
+                    <label class="uk-form-label" for="client-text">Комментарий</label>
+                    <div class="uk-form-controls">
+                        <textarea rows="5" class="uk-textarea" id="client-text"
+                                  placeholder="8 999 999-99-99"></textarea>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 {% endblock %}
-
-{% block main %}
-
-{% endblock %}
+<div class="uk-cover-container as-cloud">
+    <canvas id="as-title-background" height="400"></canvas>
+    <img src="{% static 'jpg/home.jpg' %}" alt="" uk-cover>
+    <div class="uk-position-center uk-container">
+        <h1 class="as-site-title uk-text-center">
+            {% block page_title %}АЛЕКС - Праздничное Агентство - Анапа{% endblock %}
+        </h1>
+    </div>
+</div>
+<main class="as-main">
+    {% block main %}
+    {% endblock %}
+</main>
+<footer class="as-footer uk-padding uk-padding-remove-horizontal">
+    <div class="uk-container uk-container-large">
+        <div class="uk-flex uk-flex-middle uk-flex-wrap uk-flex-around">
+            <div>
+                <object class="as-footer-logo uk-align-left uk-margin-small-right uk-margin-small-top"
+                        data="{% static 'svg/logo-white.svg' %}" type="image/svg+xml"></object>
+                <small style="line-height: 1.1!important;">
+                    Праздничное Агентство "АЛЕКС" <br/>
+                    г-к. Анапа, ул. Кирова 54 <br/>
+                    8 (918) 64-86-996<br/> 8 (928) 037-39-65
+                </small>
+            </div>
+            <div>
+                <h3 style="color: white;">Мы в соц. сетях</h3>
+            </div>
+            <div>
+                <object class="as-footer-logo" data="{% static 'svg/logo-white.svg' %}" type="image/svg+xml"></object>
+            </div>
+        </div>
+    </div>
+</footer>
 {% render_bundle 'app' 'js' %}
 </body>
 </html>

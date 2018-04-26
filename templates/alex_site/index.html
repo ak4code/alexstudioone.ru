@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block seo_title %}
+    {{ block.super }} - {{ page.seo_title }}
+{% endblock %}
+
+{% block page_title %}
+    {{ page.title }}
+{% endblock %}
+
+{% block main %}
+    <div class="uk-container uk-container-large uk-margin-top">
+        {{ page.content|safe }}
+        {% if page.cards.all %}
+            <div class="uk-flex-center uk-margin-top uk-margin-bottom" uk-grid>
+                {% for card in page.cards.all %}
+                    <div class="uk-width-1-3@m">
+                        <div class="uk-cover-container as-card-image">
+                            <canvas height="300"></canvas>
+                            <img src="{{ card.image.url }}" alt="" uk-cover>
+                            <div class="as-card-body">
+                                <div class="uk-text-center">{{ card.text|safe }}</div>
+                            </div>
+                        </div>
+                        <h3 class="uk-text-center">{{ card.title }}</h3>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

@@ -36,6 +36,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'webpack_loader',
+    'mptt',
+    'alex_site.apps.AlexSiteConfig',
+    'ckeditor',
+    'ckeditor_uploader'
 ]
 
 MIDDLEWARE = [
@@ -61,6 +65,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'alex_site.context_processors.menu.top_menu',
             ],
         },
     },
@@ -117,10 +122,34 @@ STATICFILES_DIRS = (
 
 STATIC_URL = '/static/'
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+MEDIA_URL = '/media/'
+
+
 WEBPACK_LOADER = {
     'DEFAULT': {
         'CACHE': not DEBUG,
         'BUNDLE_DIR_NAME': 'bundles/',
         'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json')
     }
+}
+
+CKEDITOR_UPLOAD_PATH = "uploads/"
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': [
+            ['Source', '-', 'Bold', 'Italic', 'Styles', 'Format', 'Font', 'FontSize'],
+            ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-',
+             'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'Image']
+        ],
+        'height': 300,
+        'width': 800,
+        'allowedContent': True,
+        'uploadUrl': '/ckeditor/upload/',
+        "removePlugins": "stylesheetparser",
+        'extraPlugins': ','.join([
+            'autoembed',
+        ]),
+    },
 }

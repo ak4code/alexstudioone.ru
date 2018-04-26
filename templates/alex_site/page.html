@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block seo_title %}
+    {{ block.super }} - {{ page.seo_title }}
+{% endblock %}
+
+{% block page_title %}
+    {{ page.title }}
+{% endblock %}
+
+{% block main %}
+    <div class="uk-container uk-container-large uk-margin-top">
+        {{ page.content|safe }}
+        {{ page.get_absolute_url }}
+    </div>
+{% endblock %}
