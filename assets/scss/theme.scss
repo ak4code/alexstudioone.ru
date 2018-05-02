@@ -109,6 +109,9 @@ ul.as-topmenu {
   &:hover {
     box-shadow: 2px 4px 0px #ce9c0c;
   }
+  &:active {
+     box-shadow: inset 0px 0px 7px #966f0b;
+  }
 }
 
 .as-footer {

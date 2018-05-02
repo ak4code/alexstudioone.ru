@@ -12,6 +12,13 @@ class MenuAdmin(admin.ModelAdmin):
     list_filter = ('position',)
     inlines = (MenuItemInlines,)
 
+    def save_model(self, request, obj, form, change):
+        for item in obj.menuItems.all():
+            if not item.url:
+                item.url = item.get_url_page()
+                item.save()
+        obj.save()
+
 
 class PageAdmin(admin.ModelAdmin):
     list_display = ('title', 'owner', 'last_editor', 'created', 'updated',)
@@ -39,8 +46,10 @@ class PageAdmin(admin.ModelAdmin):
         obj.last_editor = request.user
         obj.save()
 
+
 class CardAdmin(admin.ModelAdmin):
     pass
+
 
 admin.site.register(Menu, MenuAdmin)
 admin.site.register(Page, PageAdmin)

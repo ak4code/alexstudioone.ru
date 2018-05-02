@@ -50,6 +50,7 @@ class MenuItem(MPTTModel):
                             verbose_name='Раздел')
     pageId = models.ForeignKey('Page', blank=True, null=True, related_name='menuElements', on_delete=models.CASCADE,
                                verbose_name='Страница')
+    url = models.CharField(max_length=300, blank=True, null=True, verbose_name='Ссылка')
     order = models.PositiveIntegerField(default=0, verbose_name='Порядок')
 
     def get_url_page(self):

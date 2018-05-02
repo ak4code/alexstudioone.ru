@@ -1,24 +1,28 @@
 {% load render_bundle from webpack_loader %}
 {% load staticfiles %}
+{% load sitetree %}
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block seo_title %}АЛЕКС{% endblock %}</title>
+    <meta name="description" content="{% block seo_description %}АЛЕКС - Праздничное Агентство - Анапа{% endblock %}">
     {% render_bundle 'app' 'css' %}
 </head>
 <body>
+
 {% block topbar %}
     <div class="as-topbar uk-visible@s">
         <div class="uk-container uk-container-expand">
-            <ul class="as-topmenu uk-flex uk-flex-center">
-                {% if top_menu.menuItems.all %}
-                    {% for item in top_menu.menuItems.all %}
-                        <li><a href="{{ item.get_url_page }}">{{ item.name }}</a></li>
-                    {% endfor %}
-                {% endif %}
-            </ul>
+            {% sitetree_menu from "main" include "trunk" template "menu/topmenu.html" %}
+            {#            <ul class="as-topmenu uk-flex uk-flex-center">#}
+            {#                {% if top_menu.menuItems.all %}#}
+            {#                    {% for item in top_menu.menuItems.all %}#}
+            {#                        <li><a href="{{ item.get_url_page }}">{{ item.name }}</a></li>#}
+            {#                    {% endfor %}#}
+            {#                {% endif %}#}
+            {#            </ul>#}
         </div>
     </div>
 {% endblock %}
@@ -102,7 +106,7 @@
                 </small>
             </div>
             <div>
-                <h3 style="color: white;">Мы в соц. сетях</h3>
+                <h3 style="color: white;">Мы в соцсетях</h3>
             </div>
             <div>
                 <object class="as-footer-logo" data="{% static 'svg/logo-white.svg' %}" type="image/svg+xml"></object>
