@@ -1,17 +1,23 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
+{% load sitetree %}
 
 {% block seo_title %}
     {{ block.super }} - {% sitetree_page_title from "sitemap" %} - Анапа
 {% endblock %}
+{% block seo_description %}
+    {% sitetree_page_description from "sitemap" %}
+{% endblock %}
 
 {% block page_title %}
-    {% sitetree_page_title from "sitemap" %}
+    {{ block.super }} - {% sitetree_page_title from "sitemap" %} - Анапа
 {% endblock %}
 
 {% block main %}
     <div class="uk-container uk-container-large uk-margin-top">
-        {{ page.content|safe }}
-        {{ page.get_absolute_url }}
+        {% for album in albums %}
+            {{ album.title }}
+        {% endfor %}
+
     </div>
 {% endblock %}

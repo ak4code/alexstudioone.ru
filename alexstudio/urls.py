@@ -18,10 +18,15 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
+admin.site.site_header = "AlexStudio Админ-панель"
+admin.site.site_title = "AlexStudio Админ-панель"
+admin.site.index_title = "AlexStudio Админ-панель"
+
 urlpatterns = [
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('admin/', admin.site.urls),
     path('', include('alex_site.urls')),
+    path('', include('photo.urls')),
 ]
 
 if settings.DEBUG:

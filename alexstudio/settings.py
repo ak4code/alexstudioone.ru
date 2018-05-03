@@ -37,10 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'webpack_loader',
     'sitetree',
-    'mptt',
-    'alex_site.apps.AlexSiteConfig',
     'ckeditor',
-    'ckeditor_uploader'
+    'ckeditor_uploader',
+    'alex_site.apps.AlexSiteConfig',
+    'photo.apps.PhotoConfig',
 ]
 
 MIDDLEWARE = [
@@ -66,7 +66,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'alex_site.context_processors.menu.top_menu',
+                'django.template.context_processors.i18n',
             ],
         },
     },
@@ -125,7 +125,6 @@ STATIC_URL = '/static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 MEDIA_URL = '/media/'
-
 
 WEBPACK_LOADER = {
     'DEFAULT': {

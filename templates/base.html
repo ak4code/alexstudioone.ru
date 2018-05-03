@@ -15,14 +15,7 @@
 {% block topbar %}
     <div class="as-topbar uk-visible@s">
         <div class="uk-container uk-container-expand">
-            {% sitetree_menu from "main" include "trunk" template "menu/topmenu.html" %}
-            {#            <ul class="as-topmenu uk-flex uk-flex-center">#}
-            {#                {% if top_menu.menuItems.all %}#}
-            {#                    {% for item in top_menu.menuItems.all %}#}
-            {#                        <li><a href="{{ item.get_url_page }}">{{ item.name }}</a></li>#}
-            {#                    {% endfor %}#}
-            {#                {% endif %}#}
-            {#            </ul>#}
+            {% sitetree_menu from "top_menu" include "trunk" template "menu/topmenu.html" %}
         </div>
     </div>
 {% endblock %}
@@ -85,12 +78,14 @@
     <img src="{% static 'jpg/home.jpg' %}" alt="" uk-cover>
     <div class="uk-position-center uk-container">
         <h1 class="as-site-title uk-text-center">
-            {% block page_title %}АЛЕКС - Праздничное Агентство - Анапа{% endblock %}
+            {% block page_title %}АЛЕКС{% endblock %}
         </h1>
     </div>
 </div>
 <main class="as-main">
     {% block main %}
+        {% block cards %}
+        {% endblock %}
     {% endblock %}
 </main>
 <footer class="as-footer uk-padding uk-padding-remove-horizontal">
