@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
+{% load sitetree %}
 
 {% block seo_title %}
     {{ block.super }} - {% sitetree_page_title from "sitemap" %} - Анапа
