@@ -50,5 +50,5 @@ class Card(models.Model):
 
     class Meta:
         ordering = ['pk']
-        verbose_name = 'Услуга'
-        verbose_name_plural = 'Услуги'
+        verbose_name = 'Шоу программа'
+        verbose_name_plural = 'Шоу программы'

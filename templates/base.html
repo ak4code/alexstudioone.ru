@@ -23,7 +23,7 @@
     <div class="as-header">
         <div class="uk-flex uk-flex-middle uk-flex-around">
             <div class="uk-padding-small">
-                <a href="" class="as-logo uk-align-left uk-margin-remove">
+                <a href="/" class="as-logo uk-align-left uk-margin-remove">
                     <img src="{% static 'svg/logo.svg' %}">
                 </a>
                 <small class="uk-visible@s">Праздничное <br/> Агентство</small>
@@ -41,7 +41,7 @@
             <div class="uk-padding-small uk-visible@s">
                 <div><span class="uk-margin-small-right" uk-icon="phone"></span> Телефон:</div>
                 <div class="as-phone"><strong><a href="">8 (918) 64-86-996</a></strong></div>
-                <div class="as-phone"><strong><a href="">8 (928) 037-39-65</a></strong></div>
+                <div class="as-phone"><strong><a href="">8 (988) 139-27-50</a></strong></div>
             </div>
         </div>
     </div>
@@ -69,6 +69,11 @@
                                   placeholder="8 999 999-99-99"></textarea>
                     </div>
                 </div>
+                <div class="uk-flex uk-flex-right">
+                    <div>
+                        <a href="" class="uk-button uk-button-primary">Отправить</a>
+                    </div>
+                </div>
             </form>
         </div>
     </div>
@@ -88,7 +93,7 @@
         {% endblock %}
     {% endblock %}
 </main>
-<footer class="as-footer uk-padding uk-padding-remove-horizontal">
+<footer class="as-footer uk-padding uk-padding-remove-horizontal uk-margin-large-top">
     <div class="uk-container uk-container-large">
         <div class="uk-flex uk-flex-middle uk-flex-wrap uk-flex-around">
             <div>
@@ -97,11 +102,33 @@
                 <small style="line-height: 1.1!important;">
                     Праздничное Агентство "АЛЕКС" <br/>
                     г-к. Анапа, ул. Кирова 54 <br/>
-                    8 (918) 64-86-996<br/> 8 (928) 037-39-65
+                    8 (918) 64-86-996<br/> 8 (988) 139-27-50
                 </small>
             </div>
             <div>
                 <h3 style="color: white;">Мы в соцсетях</h3>
+                <div class="uk-flex uk-flex-center uk-grid-small">
+                    <div class="social vk">
+                        <a href="" title="Мы в Vk">
+                            <img src="{% static 'svg/vk.svg' %}">
+                        </a>
+                    </div>
+                    <div class="social instagram">
+                        <a href="" title="Мы в Instagram">
+                            <img src="{% static 'svg/instagram.svg' %}">
+                        </a>
+                    </div>
+                    <div class="social youtube">
+                        <a href="" title="Мы в YouTube">
+                            <img src="{% static 'svg/youtube.svg' %}">
+                        </a>
+                    </div>
+                    <div class="social facebook">
+                        <a href="" title="Мы в Facebook">
+                            <img src="{% static 'svg/facebook.svg' %}">
+                        </a>
+                    </div>
+                </div>
             </div>
             <div>
                 <object class="as-footer-logo" data="{% static 'svg/logo-white.svg' %}" type="image/svg+xml"></object>

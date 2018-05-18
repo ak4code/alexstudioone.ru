@@ -175,6 +175,13 @@ ul.as-topmenu {
   }
 }
 
+.social {
+  height: 30px;
+  img {
+    height: 100%;
+  }
+}
+
 @import "uikit/src/scss/variables-theme.scss";
 @import "uikit/src/scss/mixins-theme.scss";
 
