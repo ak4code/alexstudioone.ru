@@ -1,13 +1,17 @@
 {% load render_bundle from webpack_loader %}
 {% load staticfiles %}
 {% load sitetree %}
+{% load solo_tags %}
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{% block seo_title %}АЛЕКС{% endblock %}</title>
-    <meta name="description" content="{% block seo_description %}АЛЕКС - Праздничное Агентство - Анапа{% endblock %}">
+    {% get_solo 'alex_site.SiteConfiguration' as site_config %}
+    <title>{% block seo_title %}{{ site_config.site_name }}{% endblock %}</title>
+    <meta name="description" content="{% block seo_description %}{{ site_config.site_descritpion }}{% endblock %}">
+    <link href="{% static 'icon/favicon.ico' %}" type="image/x-icon" rel="icon"/>
+    {#    <link href="" rel="apple-touch-icon"/>#}
     {% render_bundle 'app' 'css' %}
 </head>
 <body>
@@ -35,13 +39,14 @@
             <div class="uk-padding-small uk-visible@s">
                 <div>
                     <div><span class="uk-margin-small-right" uk-icon="location"></span> Адрес:</div>
-                    <div><strong>г-к. Анапа, ул. Кирова 54</strong></div>
+                    <div><strong>{{ site_config.address }}</strong></div>
                 </div>
             </div>
             <div class="uk-padding-small uk-visible@s">
                 <div><span class="uk-margin-small-right" uk-icon="phone"></span> Телефон:</div>
-                <div class="as-phone"><strong><a href="">8 (918) 64-86-996</a></strong></div>
-                <div class="as-phone"><strong><a href="">8 (988) 139-27-50</a></strong></div>
+                {% for phone in site_config.phone_list %}
+                    <div class="as-phone"><strong><a href="tel:{{ phone }}">{{ phone }}</a></strong></div>
+                {% endfor %}
             </div>
         </div>
     </div>
@@ -83,7 +88,7 @@
     <img src="{% static 'jpg/home.jpg' %}" alt="" uk-cover>
     <div class="uk-position-center uk-container">
         <h1 class="as-site-title uk-text-center">
-            {% block page_title %}АЛЕКС{% endblock %}
+            {% block page_title %}{{ site_config.site_name }}{% endblock %}
         </h1>
     </div>
 </div>
@@ -100,34 +105,24 @@
                 <object class="as-footer-logo uk-align-left uk-margin-small-right uk-margin-small-top"
                         data="{% static 'svg/logo-white.svg' %}" type="image/svg+xml"></object>
                 <small style="line-height: 1.1!important;">
-                    Праздничное Агентство "АЛЕКС" <br/>
-                    г-к. Анапа, ул. Кирова 54 <br/>
-                    8 (918) 64-86-996<br/> 8 (988) 139-27-50
+                    Праздничное Агентство "{{ site_config.site_name }}" <br/>
+                    {{ site_config.address }}<br/>
+                    {% for phone in site_config.phone_list %}
+                        {{ phone }}<br/>
+                    {% endfor %}
                 </small>
             </div>
             <div>
                 <h3 style="color: white;">Мы в соцсетях</h3>
                 <div class="uk-flex uk-flex-center uk-grid-small">
-                    <div class="social vk">
-                        <a href="" title="Мы в Vk">
-                            <img src="{% static 'svg/vk.svg' %}">
-                        </a>
-                    </div>
-                    <div class="social instagram">
-                        <a href="" title="Мы в Instagram">
-                            <img src="{% static 'svg/instagram.svg' %}">
-                        </a>
-                    </div>
-                    <div class="social youtube">
-                        <a href="" title="Мы в YouTube">
-                            <img src="{% static 'svg/youtube.svg' %}">
-                        </a>
-                    </div>
-                    <div class="social facebook">
-                        <a href="" title="Мы в Facebook">
-                            <img src="{% static 'svg/facebook.svg' %}">
-                        </a>
-                    </div>
+                    {% for social in site_config.socials.all %}
+                        <div class="social vk">
+                            <a href="{{ social.link }}" title="Мы в {{ social.get_social_display }}" target="_blank"
+                               rel="nofollow">
+                                <img src="{% static 'svg/' %}{{ social.social|lower }}.svg">
+                            </a>
+                        </div>
+                    {% endfor %}
                 </div>
             </div>
             <div>

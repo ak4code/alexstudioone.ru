@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'webpack_loader',
     'sitetree',
+    'solo',
     'ckeditor',
     'ckeditor_uploader',
     'alex_site.apps.AlexSiteConfig',

@@ -20,7 +20,7 @@ ul.as-topmenu {
   color: white;
   line-height: 40px;
   vertical-align: middle;
-  li {
+  & > li {
     a {
       color: hotpink;
       font-weight: bold;

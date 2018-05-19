@@ -24,3 +24,8 @@ class PartyList(ListView):
     queryset = Card.objects.all()
     context_object_name = 'cards'
     template_name = 'alex_site/party-list.html'
+
+
+class PartyDetail(DetailView):
+    model = Card
+    template_name = 'alex_site/party-detail.html'

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load sitetree %}
+
+{% block seo_title %}
+    {{ block.super }} - {% sitetree_page_title from "sitemap" %} - Анапа
+{% endblock %}
+{% block seo_description %}
+    {% sitetree_page_description from "sitemap" %}
+{% endblock %}
+
+{% block page_title %}
+    {{ block.super }} - {% sitetree_page_title from "sitemap" %} - Анапа
+{% endblock %}
+
+{% block main %}
+    <div class="uk-container uk-margin-top">
+        {% sitetree_breadcrumbs from "sitemap" template "nav/breadcrumb.html" %}
+        <div class="service">
+            {{ card.text|safe }}
+        </div>
+    </div>
+{% endblock %}

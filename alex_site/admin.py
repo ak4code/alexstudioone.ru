@@ -1,5 +1,13 @@
 from django.contrib import admin
-from .models import Page, Card
+from .models import Page, Card, SiteConfiguration, SocialLink
+from solo.admin import SingletonModelAdmin
+from django.http import HttpResponseRedirect
+
+try:
+    from django.utils.encoding import force_unicode
+except ImportError:
+    from django.utils.encoding import force_text as force_unicode
+from django.utils.translation import ugettext as _
 
 
 class PageAdmin(admin.ModelAdmin):
@@ -33,5 +41,24 @@ class CardAdmin(admin.ModelAdmin):
     pass
 
 
+class SocialLinkInline(admin.TabularInline):
+    model = SocialLink
+    extra = 1
+
+
+class SiteAdmin(SingletonModelAdmin):
+    inlines = (SocialLinkInline,)
+
+    def response_change(self, request, obj):
+        msg = _('%(obj)s изменены успешно.') % {'obj': force_unicode(obj)}
+        if '_continue' in request.POST:
+            self.message_user(request, msg + ' ' + _('Вы внесли изменения ниже.'))
+            return HttpResponseRedirect(request.path)
+        else:
+            self.message_user(request, msg)
+            return HttpResponseRedirect("../../")
+
+
 admin.site.register(Page, PageAdmin)
 admin.site.register(Card, CardAdmin)
+admin.site.register(SiteConfiguration, SiteAdmin)
