@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Page, Card, SiteConfiguration, SocialLink
+from .models import Page, Card, CardPhoto, SiteConfiguration, SocialLink
 from solo.admin import SingletonModelAdmin
 from django.http import HttpResponseRedirect
 
@@ -37,8 +37,13 @@ class PageAdmin(admin.ModelAdmin):
         obj.save()
 
 
+class CardPhotoInline(admin.TabularInline):
+    model = CardPhoto
+    extra = 3
+
+
 class CardAdmin(admin.ModelAdmin):
-    pass
+    inlines = (CardPhotoInline,)
 
 
 class SocialLinkInline(admin.TabularInline):

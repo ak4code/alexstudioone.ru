@@ -19,5 +19,19 @@
         <div class="service">
             {{ card.text|safe }}
         </div>
+        <div class="service-photo">
+            {% if card.photos.all %}
+                <div class="uk-flex uk-flex-center uk-grid-small uk-child-width-1-4@m" uk-grid uk-lightbox>
+                    {% for photo in card.photos.all %}
+                        <a href="{{ photo.file.url }}">
+                            <div class="uk-cover-container">
+                                <canvas height="350"></canvas>
+                                <img src="{{ photo.file.url }}" alt="" uk-cover>
+                            </div>
+                        </a>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
     </div>
 {% endblock %}

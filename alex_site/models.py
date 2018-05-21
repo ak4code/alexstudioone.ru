@@ -61,6 +61,22 @@ class Card(models.Model):
         verbose_name_plural = 'Услуги'
 
 
+class CardPhoto(models.Model):
+    card = models.ForeignKey(Card, related_name='photos', on_delete=models.CASCADE)
+    title = models.CharField(max_length=150, blank=True, null=True, verbose_name='Заголовок')
+    file = models.ImageField(upload_to='cards/photo', verbose_name='Фото')
+
+    def __str__(self):
+        if self.title:
+            return self.title
+        else:
+            return str(self.file.name)
+
+    class Meta:
+        verbose_name = 'Фото'
+        verbose_name_plural = 'Фото'
+
+
 class SiteConfiguration(SingletonModel):
     site_name = models.CharField(max_length=255, default='Название сайта', verbose_name='Название сайта')
     site_descritpion = models.TextField(max_length=255, default='Описание сайта', verbose_name='Описание сайта')

@@ -27,12 +27,11 @@
                                     <canvas height="300"></canvas>
                                     <img src="{{ card.image.url }}" alt="" uk-cover>
                                     <div class="as-card-body">
-                                        <div class="uk-text-center">{{ card.text|safe }}</div>
+                                        <h3 class="uk-text-center uk-position-center as-card-title uk-text-uppercase">
+                                            {{ card.title }}
+                                        </h3>
                                     </div>
                                 </div>
-                            </a>
-                            <a href="{% url 'party-detail' card.slug %}" title="{{ card.title }}">
-                                <h3 class="uk-text-center as-card-title uk-text-uppercase">{{ card.title }}</h3>
                             </a>
                         </div>
                     {% endfor %}
