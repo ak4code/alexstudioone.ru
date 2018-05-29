@@ -1,3 +1,4 @@
+from photo.models import Photo
 from .models import Page, Card
 from django.views.generic import TemplateView, DetailView, ListView
 
@@ -12,6 +13,7 @@ class Home(TemplateView):
                                                              'is_front': True})
         context = super().get_context_data(**kwargs)
         context['page'] = page
+        context['photos'] = Photo.objects.all().order_by('?')[:10]
         return context
 
 

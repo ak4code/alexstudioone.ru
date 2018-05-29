@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Album, Photo
+from .models import Album, Photo, AlbumGroup
 
 
 class PhotoInline(admin.TabularInline):
@@ -11,4 +11,8 @@ class AlbumAdmin(admin.ModelAdmin):
     inlines = [PhotoInline, ]
 
 
+class AlbumGroupAdmin(admin.ModelAdmin):
+    prepopulated_fields = {"slug": ("name",)}
+
 admin.site.register(Album, AlbumAdmin)
+admin.site.register(AlbumGroup, AlbumGroupAdmin)

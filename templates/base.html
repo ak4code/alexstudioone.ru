@@ -54,7 +54,8 @@
 {% block modal_feed %}
     <div id="modal-feed" uk-modal>
         <div class="uk-modal-dialog uk-modal-body">
-            <form class="uk-form-stacked">
+            <form class="uk-form-stacked" method="post">
+                {% csrf_token %}
                 <div class="uk-margin">
                     <label class="uk-form-label" for="client-name">Ваше имя</label>
                     <div class="uk-form-controls">
@@ -71,7 +72,7 @@
                     <label class="uk-form-label" for="client-text">Комментарий</label>
                     <div class="uk-form-controls">
                         <textarea rows="5" class="uk-textarea" id="client-text"
-                                  placeholder="8 999 999-99-99"></textarea>
+                                  placeholder="Комментарий"></textarea>
                     </div>
                 </div>
                 <div class="uk-flex uk-flex-right">
