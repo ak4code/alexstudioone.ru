@@ -60,6 +60,12 @@
                     <img src="{% static 'svg/logo.svg' %}">
                 </a>
             </div>
+            <div class="uk-padding-small">
+                <div><span class="uk-margin-small-right" uk-icon="phone"></span> Телефон:</div>
+                {% for phone in site_config.phone_list %}
+                    <div class="as-phone"><strong><a href="tel:{{ phone }}">{{ phone }}</a></strong></div>
+                {% endfor %}
+            </div>
             <div class="uk-margin-top">
                 {% sitetree_menu from "top_menu" include "trunk" template "nav/mobile.html" %}
             </div>
