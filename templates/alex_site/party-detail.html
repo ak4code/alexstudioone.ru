@@ -25,7 +25,7 @@
                     {% for photo in card.photos.all %}
                         <a href="{{ photo.file.url }}">
                             <div class="uk-cover-container">
-                                <canvas height="350"></canvas>
+                                <canvas height="400"></canvas>
                                 <img src="{{ photo.file.url }}" alt="" uk-cover>
                             </div>
                         </a>
