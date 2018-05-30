@@ -77,16 +77,17 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'alexstudio.wsgi.application'
 
+IS_DEV = config('IS_DEV', default=False, cast=bool)
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
-if DEBUG:
+if IS_DEV:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
-if not DEBUG:
+if not IS_DEV:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
