@@ -1,6 +1,7 @@
 const path = require('path');
 const BundleTracker = require('webpack-bundle-tracker');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const webpack = require('webpack');
 const extractSCSS = new ExtractTextPlugin('[name].min.css');
@@ -42,7 +43,10 @@ module.exports = {
         ]
     },
     plugins: [
-        new CleanWebpackPlugin(['assets/bundles']),
+        new CleanWebpackPlugin(['assets/bundles', 'assets/dist']),
+        new UglifyJSPlugin({
+            sourceMap: true
+        }),
         new BundleTracker({filename: './webpack-stats.json'}),
         extractSCSS,
         new webpack.HotModuleReplacementPlugin(),
