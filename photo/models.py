@@ -1,5 +1,6 @@
 from django.db import models
 from ckeditor.fields import RichTextField
+from embed_video.fields import EmbedVideoField
 
 
 class PhotoBase(models.Model):
@@ -55,5 +56,20 @@ class Photo(models.Model):
 
     class Meta:
         ordering = ['-sort_order']
-        verbose_name_plural = 'Фото'
-        verbose_name = 'Фотографии'
+        verbose_name_plural = 'Фотографии'
+        verbose_name = 'Фото'
+
+
+class Video(models.Model):
+    link = EmbedVideoField(verbose_name='Ссылка на видео')
+    album = models.ForeignKey(Album, related_name='videos', blank=True, null=True, verbose_name='Альбом',
+                              on_delete=models.CASCADE)
+    sort_order = models.PositiveIntegerField(default=0, db_index=True, verbose_name='Сортировка')
+
+    def __str__(self):
+        return self.link
+
+    class Meta:
+        ordering = ['-sort_order']
+        verbose_name_plural = 'Видео'
+        verbose_name = 'Видео'

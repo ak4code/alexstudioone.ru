@@ -7,6 +7,11 @@ class AlbumList(ListView):
     context_object_name = 'albums'
     template_name = 'photo/album_list.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['albumgroups'] = AlbumGroup.objects.all()
+        return context
+
 
 class AlbumGroupDetail(DetailView):
     model = AlbumGroup
@@ -14,7 +19,6 @@ class AlbumGroupDetail(DetailView):
     template_name = 'photo/album_group.html'
 
     def get_context_data(self, **kwargs):
-        # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
         context['albums'] = Album.objects.filter(group=kwargs['object'])
         return context
@@ -23,3 +27,8 @@ class AlbumGroupDetail(DetailView):
 class AlbumDetail(DetailView):
     model = Album
     template_name = 'photo/album_detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['albumgroup'] = kwargs['object'].group
+        return context

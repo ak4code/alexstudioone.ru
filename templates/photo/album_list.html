@@ -3,19 +3,26 @@
 {% load sitetree %}
 
 {% block seo_title %}
-    {{ block.super }} - {% sitetree_page_title from "sitemap" %} - Анапа
+    {% sitetree_page_title from "sitemap" %} - {{ block.super }} Праздничное агентство - Анапа
 {% endblock %}
 {% block seo_description %}
     {% sitetree_page_description from "sitemap" %}
 {% endblock %}
 
 {% block page_title %}
-    {{ block.super }} - {% sitetree_page_title from "sitemap" %} - Анапа
+    {% sitetree_page_title from "sitemap" %}
 {% endblock %}
 
 {% block main %}
     <div class="uk-container uk-container-large uk-margin-top">
         <h2 class="uk-heading-line uk-text-center"><span>Альбомы</span></h2>
+        <div class="uk-flex uk-flex-center uk-grid-small">
+            {% for albumgroup in albumgroups %}
+                <a href="{% url 'album-group' albumgroup.slug %}">
+                    <h3 class="as-card-title uk-text-center">{{ albumgroup.name }}</h3>
+                </a>
+            {% endfor %}
+        </div>
         <div class="uk-flex uk-flex-center uk-margin-top uk-margin-bottom" uk-grid>
             {% for album in albums %}
                 <div class="uk-width-1-3@s uk-width-1-4@m uk-width-1-5@l uk-position-relative">

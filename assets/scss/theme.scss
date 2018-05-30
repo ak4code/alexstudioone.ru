@@ -8,6 +8,8 @@ $heading-line-border: $base-heading-color;
 $inverse-heading-line-border: #ffffff;
 $inverse-base-heading-color: #ffffff;
 $global-line-height: 1.2;
+$offcanvas-bar-background: white;
+$offcanvas-bar-color-mode: darken;
 
 .as-topbar {
   min-height: 40px;
@@ -247,6 +249,11 @@ ul.as-topmenu {
     height: 100%;
   }
 }
+
+.uk-offcanvas-bar {
+    background: white;
+}
+
 
 @import "uikit/src/scss/variables-theme.scss";
 @import "uikit/src/scss/mixins-theme.scss";

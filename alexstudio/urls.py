@@ -26,7 +26,7 @@ urlpatterns = [
     re_path(r'^ckeditor/', include('ckeditor_uploader.urls')),
     path('admin/', admin.site.urls),
     path('', include('alex_site.urls')),
-    path('', include('photo.urls')),
+    path('photo-and-video/', include('photo.urls')),
 ]
 
 if settings.DEBUG:

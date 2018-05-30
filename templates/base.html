@@ -30,6 +30,7 @@
                 <a href="/" class="as-logo uk-align-left uk-margin-remove">
                     <img src="{% static 'svg/logo.svg' %}">
                 </a>
+                <a class="uk-navbar-toggle uk-hidden@s" uk-navbar-toggle-icon uk-toggle href="#mobile-menu"></a>
                 <small class="uk-visible@s">Праздничное <br/> Агентство</small>
             </div>
             <div class="uk-padding-small uk-visible@s uk-visible@m">
@@ -48,6 +49,21 @@
                     <div class="as-phone"><strong><a href="tel:{{ phone }}">{{ phone }}</a></strong></div>
                 {% endfor %}
             </div>
+        </div>
+    </div>
+    <div id="mobile-menu" uk-offcanvas>
+        <div class="uk-offcanvas-bar">
+
+            <button class="uk-offcanvas-close" type="button" uk-close></button>
+            <div style="min-height: 70px;">
+                <a href="/" class="as-logo uk-align-left uk-margin-remove">
+                    <img src="{% static 'svg/logo.svg' %}">
+                </a>
+            </div>
+            <div class="uk-margin-top">
+                {% sitetree_menu from "top_menu" include "trunk" template "nav/mobile.html" %}
+            </div>
+
         </div>
     </div>
 {% endblock %}

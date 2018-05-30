@@ -1,32 +1,53 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% load sitetree %}
+{% load embed_video_tags %}
 
 {% block seo_title %}
-    {{ block.super }} - {% sitetree_page_title from "sitemap" %} - Анапа
+    {% sitetree_page_title from "sitemap" %} - {{ block.super }} Праздничное агентство - Анапа
 {% endblock %}
 {% block seo_description %}
     {% sitetree_page_description from "sitemap" %}
 {% endblock %}
 
 {% block page_title %}
-    {{ block.super }} - {% sitetree_page_title from "sitemap" %} - Анапа
+    {% sitetree_page_title from "sitemap" %}
 {% endblock %}
 
 {% block main %}
     <div class="uk-container uk-container-large uk-margin-top">
         {% sitetree_breadcrumbs from "sitemap" template "nav/breadcrumb.html" %}
-        <div class="uk-flex uk-flex-center uk-margin-top uk-margin-bottom" uk-grid uk-lightbox>
-            {% for photo in album.photos.all %}
-                <div class="uk-width-1-3@s uk-width-1-4@m uk-width-1-5@l uk-position-relative">
-                    <a href="{{ photo }}">
-                        <div class="uk-cover-container">
-                            <canvas height="300"></canvas>
-                            <img src="{{ photo }}" alt="" uk-cover>
-                        </div>
-                    </a>
-                </div>
-            {% endfor %}
-        </div>
+        {% if album.videos.all %}
+            <h3 class="uk-heading-divider">Видео</h3>
+            <div class="uk-flex uk-flex-center uk-margin-top uk-margin-bottom" uk-grid uk-lightbox>
+                {% for video in album.videos.all %}
+                    <div class="uk-width-1-3@s uk-width-1-4@m uk-width-1-5@l uk-position-relative">
+                        <a href="{{ video.link }}" data-caption="YouTube">
+                            <div class="uk-cover-container uk-height-medium">
+                                {% video video.link as my_video %}
+                                    <canvas height="300"></canvas>
+                                    <img src="{{ my_video.thumbnail }}" alt="" uk-cover>
+                                {% endvideo %}
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+        {% if album.photos.all %}
+            <h3 class="uk-heading-divider">Фотографии</h3>
+            <div class="uk-flex uk-flex-center uk-grid-small uk-margin-top uk-margin-bottom" uk-grid uk-lightbox>
+                {% for photo in album.photos.all %}
+                    <div class="uk-width-1-2 uk-width-1-3@s uk-width-1-4@m uk-width-1-5@l uk-position-relative">
+                        <a href="{{ photo }}">
+                            <div class="uk-cover-container">
+                                <canvas height="300"></canvas>
+                                <img src="{{ photo }}" alt="" uk-cover>
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
     </div>
 {% endblock %}
