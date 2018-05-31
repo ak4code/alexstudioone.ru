@@ -18,6 +18,10 @@ class AlbumGroup(PhotoBase):
     slug = models.SlugField(max_length=255, unique=True, verbose_name='ЧПУ ссылка')
     sort_order = models.PositiveIntegerField(default=0, db_index=True, verbose_name='Сортировка')
 
+    def get_absolute_url(self):
+        from django.urls import reverse
+        return reverse('album-group', args=[str(self.slug)])
+
     def __str__(self):
         return self.name
 
@@ -38,6 +42,10 @@ class Album(PhotoBase):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        from django.urls import reverse
+        return reverse('album-detail', args=[str(self.id)])
 
     class Meta:
         ordering = ['-sort_order']

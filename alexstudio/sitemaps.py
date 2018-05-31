@@ -2,6 +2,7 @@ from django.contrib import sitemaps
 from django.urls import reverse
 
 from alex_site.models import Page, Card
+from photo.models import Album, AlbumGroup
 
 
 class StaticViewSitemap(sitemaps.Sitemap):
@@ -31,6 +32,26 @@ class CardSitemap(sitemaps.Sitemap):
 
     def items(self):
         return Card.objects.all()
+
+    def lastmod(self, obj):
+        return obj.updated
+
+class AlbumSitemap(sitemaps.Sitemap):
+    changefreq = "monthly"
+    priority = 0.7
+
+    def items(self):
+        return Album.objects.all()
+
+    def lastmod(self, obj):
+        return obj.updated
+
+class AlbumGroupSitemap(sitemaps.Sitemap):
+    changefreq = "monthly"
+    priority = 0.7
+
+    def items(self):
+        return AlbumGroup.objects.all()
 
     def lastmod(self, obj):
         return obj.updated

@@ -51,6 +51,10 @@ class Card(SiteMetaBase):
     def __str__(self):
         return self.title
 
+    def get_absolute_url(self):
+        from django.urls import reverse
+        return reverse('party-detail', args=[str(self.slug)])
+
     def save(self, *args, **kwargs):
         self.slug = uuslug(self.title, instance=self)
         super(Card, self).save(*args, **kwargs)

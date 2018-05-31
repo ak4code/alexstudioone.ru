@@ -18,7 +18,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include, re_path
 from django.contrib.sitemaps.views import sitemap
-from .sitemaps import StaticViewSitemap
+from .sitemaps import StaticViewSitemap, PageSitemap, CardSitemap, AlbumSitemap, AlbumGroupSitemap
 
 admin.site.site_header = "AlexStudio Админ-панель"
 admin.site.site_title = "AlexStudio Админ-панель"
@@ -26,6 +26,10 @@ admin.site.index_title = "AlexStudio Админ-панель"
 
 sitemaps = {
     'static': StaticViewSitemap,
+    'page': PageSitemap,
+    'card': CardSitemap,
+    'album': AlbumSitemap,
+    'albumgroup': AlbumGroupSitemap,
 }
 
 urlpatterns = [
