@@ -17,16 +17,24 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include, re_path
+from django.contrib.sitemaps.views import sitemap
+from .sitemaps import StaticViewSitemap
 
 admin.site.site_header = "AlexStudio Админ-панель"
 admin.site.site_title = "AlexStudio Админ-панель"
 admin.site.index_title = "AlexStudio Админ-панель"
 
+sitemaps = {
+    'static': StaticViewSitemap,
+}
+
 urlpatterns = [
     re_path(r'^ckeditor/', include('ckeditor_uploader.urls')),
-    path('admin/', admin.site.urls),
+    path('alex/admin/', admin.site.urls),
     path('', include('alex_site.urls')),
     path('photo-and-video/', include('photo.urls')),
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps},
+         name='django.contrib.sitemaps.views.sitemap')
 ]
 
 if settings.DEBUG:

@@ -41,7 +41,7 @@ class Page(SiteMetaBase):
         verbose_name_plural = "Страницы"
 
 
-class Card(models.Model):
+class Card(SiteMetaBase):
     title = models.CharField(max_length=200, verbose_name='Заголовок')
     text = RichTextField(blank=True, null=True, verbose_name='Текст')
     image = models.ImageField(upload_to='cards/', verbose_name='Картинка')

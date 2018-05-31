@@ -1,0 +1,8 @@
+User-agent: *
+
+Disallow: /alex/*
+Disallow: /ckeditor/*
+Disallow: /index.php
+
+Host: http://alexstudioone.ru
+sitemap: http://alexstudioone.ru/sitemap.xml
