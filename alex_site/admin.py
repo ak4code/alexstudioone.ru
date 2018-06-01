@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Page, Card, CardPhoto, SiteConfiguration, SocialLink
+from .models import Page, Card, CardPhoto, SiteConfiguration, SocialLink, Message
 from solo.admin import SingletonModelAdmin
 from django.http import HttpResponseRedirect
 
@@ -63,7 +63,11 @@ class SiteAdmin(SingletonModelAdmin):
             self.message_user(request, msg)
             return HttpResponseRedirect("../../")
 
+class MessageAdmin(admin.ModelAdmin):
+    list_display = ('name', 'phone', 'created')
+
 
 admin.site.register(Page, PageAdmin)
 admin.site.register(Card, CardAdmin)
 admin.site.register(SiteConfiguration, SiteAdmin)
+admin.site.register(Message, MessageAdmin)

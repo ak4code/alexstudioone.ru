@@ -1,0 +1,45 @@
+{% load staticfiles %}
+{% block subject %}Новая заявка с сайта{% endblock %}
+
+{% block text_body %}
+    Новая заявка с сайта
+    Имя: {{ form.name }}
+    Телефон: {{ form.phone }}
+    Комментарий: {{ form.comment }}
+{% endblock %}
+{% block html_body %}
+    <table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable">
+        <tr>
+            <td align="center" valign="top">
+                <table border="0" cellpadding="20" cellspacing="0" width="600" id="emailContainer">
+                    <tr>
+                        <td align="center" valign="top">
+                            <table border="0" cellpadding="20" cellspacing="0" width="100%" id="emailHeader">
+                                <tr>
+                                    <td align="center" valign="top">
+                                        <h1>Новая заявка с сайта</h1>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center" valign="top">
+                            <table border="0" cellpadding="20" cellspacing="0" width="100%" id="emailBody">
+                                <tr>
+                                    <td align="center" valign="top">
+                                        <ul>
+                                            <li>Имя: {{ form.name }}</li>
+                                            <li>Телефон: {{ form.phone }}</li>
+                                            <li>Комментарий: {{ form.comment }}</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+{% endblock %}

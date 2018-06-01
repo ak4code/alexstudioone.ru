@@ -3,16 +3,23 @@ chardet==3.0.4
 Django==2.0.5
 django-ckeditor==5.4.0
 django-embed-video==1.1.2
+django-filebrowser==3.10.1
+django-grappelli==2.11.1
 django-js-asset==1.1.0
+django-mptt==0.9.0
+django-oembed-works==0.2.2
 django-sitetree==1.10.0
 django-solo==1.1.3
-django-uuslug==1.1.8
+django-templated-mail==1.1.1
+django-tinymce==2.7.0
+-e git+https://github.com/un33k/django-uuslug@4749785a9a2e10117ae2d02da00759cd002a32e5#egg=django_uuslug
 django-webpack-loader==0.6.0
+django-wysiwyg-redactor==0.5.1
 idna==2.6
 Pillow==5.1.0
 psycopg2-binary==2.7.4
 python-decouple==3.1
-python-slugify==1.2.5
+-e git+https://github.com/un33k/python-slugify.git@4c1a344652dfef32f786a96d94b351f4277da964#egg=python_slugify
 pytz==2018.4
 requests==2.18.4
 Unidecode==1.0.22

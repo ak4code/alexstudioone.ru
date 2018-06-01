@@ -76,31 +76,31 @@
 {% endblock %}
 {% block modal_feed %}
     <div id="modal-feed" uk-modal>
-        <div class="uk-modal-dialog uk-modal-body">
-            <form class="uk-form-stacked" method="post">
+        <div class="uk-modal-dialog uk-modal-body" id="feed-modal">
+            <form id="feed-form" class="uk-form-stacked" method="post" action="{% url 'feedback' %}">
                 {% csrf_token %}
                 <div class="uk-margin">
                     <label class="uk-form-label" for="client-name">Ваше имя</label>
                     <div class="uk-form-controls">
-                        <input class="uk-input" id="client-name" type="text" placeholder="Ваше имя">
+                        <input class="uk-input" name="name" id="client-name" type="text" required placeholder="Ваше имя">
                     </div>
                 </div>
                 <div class="uk-margin">
                     <label class="uk-form-label" for="client-phone">Ваш телефон</label>
                     <div class="uk-form-controls">
-                        <input class="uk-input" id="client-phone" type="text" placeholder="8 999 999-99-99">
+                        <input class="uk-input" name="phone"  id="client-phone" type="text" required placeholder="8 999 999-99-99">
                     </div>
                 </div>
                 <div class="uk-margin">
                     <label class="uk-form-label" for="client-text">Комментарий</label>
                     <div class="uk-form-controls">
-                        <textarea rows="5" class="uk-textarea" id="client-text"
+                        <textarea rows="5" name="comment" class="uk-textarea" required id="client-text"
                                   placeholder="Комментарий"></textarea>
                     </div>
                 </div>
                 <div class="uk-flex uk-flex-right">
                     <div>
-                        <a href="" class="uk-button uk-button-primary">Отправить</a>
+                        <button type="submit" id="send-feed" class="uk-button uk-button-primary">Отправить</button>
                     </div>
                 </div>
             </form>

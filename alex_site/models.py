@@ -119,3 +119,17 @@ class SocialLink(models.Model):
     class Meta:
         verbose_name = "Соц. сеть"
         verbose_name_plural = "Соц. сети"
+
+
+class Message(models.Model):
+    name = models.CharField(max_length=255, verbose_name='Имя')
+    phone = models.CharField(max_length=255, verbose_name='Телефон')
+    comment = models.TextField(max_length=255, verbose_name='Телефон')
+    created = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Сообщение'
+        verbose_name_plural = 'Сообщения'
