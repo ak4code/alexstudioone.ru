@@ -19,4 +19,4 @@ class FeedForm(forms.ModelForm):
         fields = ['name', 'phone', 'comment']
 
     def send_email(self, request, context):
-        MyEmailMessage(request, context).send(to=[settings.DEFAULT_FROM_EMAIL, 'haritonov.aka@gmail.com'])
+        MyEmailMessage(request, context).send(to=[settings.DEFAULT_FROM_EMAIL, 'haritonov.aka@gmail.com', 'mr.alexforex@mail.ru'])
