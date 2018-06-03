@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+
+{% block seo_title %}
+    Страница не найдена
+{% endblock %}
+{% block meta %}
+    <meta name="robots" content="noindex, nofollow">{% endblock %}
+
+{% block seo_description %}
+    Страница не найдена
+{% endblock %}
+
+{% block page_title %}
+    Страница не найдена
+{% endblock %}
+
+{% block main %}
+    <div class="uk-container uk-text-center">
+        <h2 class="uk-heading-divider">Запрашиваемая страница не найдена</h2>
+        <div class="uk-text-lead">
+            <p>Возможно, неправильно указан путь в адресной строке или страница была удалена.</p>
+            <p>Возврат на <a href="/">главную страницу</a></p>
+        </div>
+    </div>
+{% endblock %}

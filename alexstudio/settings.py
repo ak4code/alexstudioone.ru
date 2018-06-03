@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sitemaps',
+    'django.contrib.sites',
+    'django.contrib.redirects',
     'webpack_loader',
     'sitetree',
     'solo',
@@ -55,6 +57,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.contrib.redirects.middleware.RedirectFallbackMiddleware',
 ]
 
 ROOT_URLCONF = 'alexstudio.urls'
@@ -219,5 +222,4 @@ EMAIL_HOST_USER = config('EMAIL_HOST_USER', default='')
 EMAIL_USE_TLS = config('EMAIL_USE_TLS', default=False, cast=bool)
 DEFAULT_FROM_EMAIL = 'Алекс Праздничное Агентство <info@alexstudioone.ru>'
 
-DOMAIN = 'alexstuioone.ru'
-SITE_NAME = 'Алекс Праздничное Агентство'
+SITE_ID = 1

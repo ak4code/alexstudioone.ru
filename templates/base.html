@@ -13,6 +13,7 @@
     <link href="{% static 'icon/favicon.ico' %}" type="image/x-icon" rel="icon"/>
     {#    <link href="" rel="apple-touch-icon"/>#}
     {% render_bundle 'app' 'css' %}
+    {% block meta %}{% endblock %}
     <meta name="yandex-verification" content="ee3c0a0e25d3f5c5"/>
 </head>
 <body>
@@ -82,13 +83,15 @@
                 <div class="uk-margin">
                     <label class="uk-form-label" for="client-name">Ваше имя</label>
                     <div class="uk-form-controls">
-                        <input class="uk-input" name="name" id="client-name" type="text" required placeholder="Ваше имя">
+                        <input class="uk-input" name="name" id="client-name" type="text" required
+                               placeholder="Ваше имя">
                     </div>
                 </div>
                 <div class="uk-margin">
                     <label class="uk-form-label" for="client-phone">Ваш телефон</label>
                     <div class="uk-form-controls">
-                        <input class="uk-input" name="phone"  id="client-phone" type="text" required placeholder="8 999 999-99-99">
+                        <input class="uk-input" name="phone" id="client-phone" type="text" required
+                               placeholder="8 999 999-99-99">
                     </div>
                 </div>
                 <div class="uk-margin">

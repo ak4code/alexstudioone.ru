@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+
+{% block seo_title %}
+    Сервер не отвечает
+{% endblock %}
+{% block meta %}
+    <meta name="robots" content="noindex, nofollow">{% endblock %}
+
+{% block seo_description %}
+    Сервер не отвечает
+{% endblock %}
+
+{% block page_title %}
+    Сервер не отвечает
+{% endblock %}
+
+{% block main %}
+    <div class="uk-container uk-text-center">
+        <h2 class="uk-heading-divider">Сервер не отвечает</h2>
+        <div class="uk-text-lead">
+            <p>Возможно, сервер не отвечает попробуйте зайти позже</p>
+            <p>Возврат на <a href="/">главную страницу</a></p>
+        </div>
+    </div>
+{% endblock %}

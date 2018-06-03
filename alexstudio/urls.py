@@ -19,10 +19,18 @@ from django.contrib import admin
 from django.urls import path, include, re_path
 from django.contrib.sitemaps.views import sitemap
 from .sitemaps import StaticViewSitemap, PageSitemap, CardSitemap, AlbumSitemap, AlbumGroupSitemap
+from django.contrib.sites.apps import SitesConfig
+from alex_site import views as alex_views
+
+SitesConfig.verbose_name = 'Домены'
 
 admin.site.site_header = "AlexStudio Админ-панель"
 admin.site.site_title = "AlexStudio Админ-панель"
 admin.site.index_title = "AlexStudio Админ-панель"
+
+handler404 = alex_views.handler404
+handler403 = alex_views.handler403
+handler500 = alex_views.handler500
 
 sitemaps = {
     'static': StaticViewSitemap,

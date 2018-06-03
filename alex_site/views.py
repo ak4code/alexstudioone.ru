@@ -1,4 +1,5 @@
 from django.http import JsonResponse
+from django.views.defaults import page_not_found, server_error, permission_denied
 
 from photo.models import Photo
 from .models import Page, Card, Message
@@ -67,3 +68,12 @@ class AjaxableResponseMixin:
 class FeedView(AjaxableResponseMixin, FormView):
     form_class = FeedForm
     success_url = '/'
+
+def handler404(request, exception):
+    return page_not_found(request, exception, template_name='alex_site/404.html')
+
+def handler403(request, exception):
+    return permission_denied(request, exception, template_name='alex_site/403.html')
+
+def handler500(request, exception):
+    return server_error(request, exception, template_name='alex_site/500.html')
