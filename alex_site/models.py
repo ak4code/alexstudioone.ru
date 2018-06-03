@@ -56,7 +56,8 @@ class Card(SiteMetaBase):
         return reverse('party-detail', args=[str(self.slug)])
 
     def save(self, *args, **kwargs):
-        self.slug = uuslug(self.title, instance=self)
+        if not self.slug:
+            self.slug = uuslug(self.title, instance=self)
         super(Card, self).save(*args, **kwargs)
 
     class Meta:
