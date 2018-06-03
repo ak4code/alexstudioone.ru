@@ -3,10 +3,10 @@
 {% load sitetree %}
 
 {% block seo_title %}
-    {% sitetree_page_title from "sitemap" %} - {{ block.super }} Праздничное агентство - Анапа
+    {{ albumgroup.seo_title }} - {{ block.super }} Праздничное агентство - Анапа
 {% endblock %}
 {% block seo_description %}
-    {% sitetree_page_description from "sitemap" %}
+    {{ albumgroup.seo_short_desc }}
 {% endblock %}
 
 {% block page_title %}
