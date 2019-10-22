@@ -16,7 +16,7 @@ django-tinymce==2.7.0
 django-webpack-loader==0.6.0
 django-wysiwyg-redactor==0.5.1
 idna==2.6
-Pillow==5.1.0
+Pillow==6.2.0
 psycopg2-binary==2.7.4
 python-decouple==3.1
 -e git+https://github.com/un33k/python-slugify.git@4c1a344652dfef32f786a96d94b351f4277da964#egg=python_slugify
