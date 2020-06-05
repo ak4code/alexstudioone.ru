@@ -1,6 +1,6 @@
 certifi==2018.4.16
 chardet==3.0.4
-Django==2.0.5
+Django==2.2.13
 django-ckeditor==5.4.0
 django-embed-video==1.1.2
 django-filebrowser==3.10.1
